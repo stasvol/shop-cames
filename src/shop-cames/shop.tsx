@@ -3,8 +3,8 @@ import React, {useEffect, useState} from "react";
 
 const ShopGames  = () =>{
     const [searchTerm, setSearchTerm] = useState("");
-    // const [searchResults, setSearchResults] = useState([]);
-    const games = 
+    const [searchResults, setSearchResults] = useState([]);
+    const games =
         [
         "Sir",
         "Alexa",
@@ -14,28 +14,28 @@ const ShopGames  = () =>{
         "Lin",
         "Sink"
     ]
-    // useEffect(() => {
-    //     const results:any = people.filter(person =>
-    //         person.toLowerCase().includes(searchTerm)
-    //     );
-    //     setSearchResults(results);
-    // }, [searchTerm]);
+    useEffect(() => {
+        const results:any = games.filter(games =>
+            games.toLowerCase().includes(searchTerm)
+        );
+        setSearchResults(results);
+    }, [searchTerm]);
 
    const handleChange =(e:any)=> {
        setSearchTerm(e.target.value)
 
    }
-    const results = !searchTerm
-        ? games
-        : games.filter(games => games.includes(searchTerm)
-        );
+    // const results = !searchTerm
+    //     ? games
+    //     : games.filter(games => games.includes(searchTerm)
+    //     );
 
     return <div>
     <form>
         <input onChange={handleChange} type="text" placeholder="Search" value={searchTerm} />
     </form>
         <ul>
-            {results.map(item => (
+            {searchResults.map(item => (
                 <li>{item}</li>
             ))}
         </ul>
